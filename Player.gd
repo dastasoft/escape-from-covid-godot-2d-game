@@ -7,6 +7,7 @@ var screen_size = Vector2.ZERO
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()
 
 func _process(delta):
 	var direction = Vector2.ZERO
@@ -43,7 +44,7 @@ func start(new_position):
 	show()
 	$CollisionShape2D.disabled = false
 
-func _on_Player_body_entered(body):
+func _on_Player_body_entered(_body):
 	hide()
 	$CollisionShape2D.set_deferred("disable", true)
 	emit_signal("hit")
