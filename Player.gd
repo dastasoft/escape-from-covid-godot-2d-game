@@ -4,10 +4,12 @@ signal hit
 
 export var speed = 400.0
 var screen_size = Vector2.ZERO
+var isDead = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
+	isDead = false
 
 func _process(delta):
 	var direction = Vector2.ZERO
