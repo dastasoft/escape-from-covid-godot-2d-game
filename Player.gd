@@ -43,10 +43,23 @@ func _process(delta):
 
 func start(new_position):
 	position = new_position
+	isDead = false
 	show()
 	$CollisionShape2D.disabled = false
 
+func death_stop():
+	get_tree().paused = true
+	yield(get_tree().create_timer(1), "timeout")
+	get_tree().paused = false
+
 func _on_Player_body_entered(_body):
-	hide()
-	$CollisionShape2D.set_deferred("disable", true)
-	emit_signal("hit")
+	if !isDead:
+		isDead = true
+		
+		get_owner().get_node("Camera2D").add_trauma(1)
+		
+		yield(death_stop(), "completed")
+		
+		hide()
+		$CollisionShape2D.set_deferred("disable", true)
+		emit_signal("hit")

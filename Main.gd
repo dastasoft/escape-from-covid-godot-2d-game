@@ -11,7 +11,6 @@ func new_game():
 	$HUD.update_score(score)
 	
 	get_tree().call_group("mobs", "queue_free")
-	$Player.isDead = false
 	$Player.start($StartPosition.position)
 	
 	$StartTimer.start()
@@ -22,25 +21,16 @@ func new_game():
 	yield($StartTimer, "timeout")
 	$ScoreTimer.start()
 	$MobTimer.start()
-	
 
-func death_stop():
-	get_tree().paused = true
-	yield(get_tree().create_timer(1), "timeout")
-	get_tree().paused = false
 
 func game_over():
-	if !$Player.isDead:
-		$Player.isDead = true
-		$ScoreTimer.stop()
-		$MobTimer.stop()
+	$ScoreTimer.stop()
+	$MobTimer.stop()
 		
-		yield(death_stop(), "completed")
+	$HUD.show_game_over()
 		
-		$HUD.show_game_over()
-		
-		$Music.stop()
-		$DeathSound.play()
+	$Music.stop()
+	$DeathSound.play()
 		
 
 func _on_MobTimer_timeout():

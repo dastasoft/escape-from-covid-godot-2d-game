@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/house-in-a-forest-loop.ogg" type="AudioStream" id=5]
 [ext_resource path="res://art/game-over.wav" type="AudioStream" id=6]
+[ext_resource path="res://Camera2D.gd" type="Script" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -16,9 +17,18 @@ _data = {
 script = ExtResource( 1 )
 mob_scene = ExtResource( 2 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 240, 360 )
+current = true
+script = ExtResource( 7 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -36.0
+margin_top = -40.0
+margin_right = 34.0
+margin_bottom = 40.0
 color = Color( 0.2204, 0.37202, 0.38, 1 )
 
 [node name="MobPath" type="Path2D" parent="."]
