@@ -60,6 +60,8 @@ func _on_Player_body_entered(_body):
 		
 		yield(death_stop(), "completed")
 		
+		Engine.time_scale = 0.5
+		
 		hide()
 		$CollisionShape2D.set_deferred("disable", true)
 		emit_signal("hit")
