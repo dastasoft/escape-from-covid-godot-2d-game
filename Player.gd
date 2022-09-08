@@ -13,6 +13,16 @@ func _ready():
 
 func _process(delta):
 	var direction = Vector2.ZERO
+	
+	if Input.get_accelerometer().x < 0:
+		direction.x -= 1
+	if Input.get_accelerometer().x > 0:
+		direction.x += 1
+	if Input.get_accelerometer().y > 0:
+		direction.y -= 1
+	if Input.get_accelerometer().y < 0:
+		direction.y += 1
+	
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
 	if Input.is_action_pressed("move_left"):
