@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://art/covid.png" type="Texture" id=1]
+[ext_resource path="res://art/covid2.png" type="Texture" id=2]
 [ext_resource path="res://Mob.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 36.0
@@ -12,9 +21,10 @@ collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 1 )
+frames = SubResource( 3 )
+animation = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

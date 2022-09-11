@@ -10,12 +10,10 @@ config_version=4
 
 [application]
 
-config/name="Dodge the Creeps (2D): starter project"
-config/description="A 2D game where you dodge little aliens.
-
-This is the starter project for the video version of the tutorial published on the GDQuest YouTube channel."
+config/name="Escape from Covid"
+config/description="A 2D game where you escape from covid."
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://art/covid.png"
 
 [display]
 
