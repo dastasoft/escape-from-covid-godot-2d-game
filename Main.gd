@@ -1,13 +1,17 @@
 extends Node
 
-export (PackedScene) var mob_scene
+export (PackedScene) var mob_level1_scene
+export (PackedScene) var mob_level2_scene
+export (PackedScene) var mob_level3_scene
 var score = 0
+var level = 1
 
 func _ready():
 	randomize()
 
 func new_game():
 	score = 0
+	level = 1
 	$HUD.update_score(score)
 	
 	get_tree().call_group("mobs", "queue_free")
@@ -37,7 +41,11 @@ func _on_MobTimer_timeout():
 	var mob_spawn_location = $MobPath/MobSpawnLocation
 	mob_spawn_location.unit_offset = randf()
 	
-	var mob = mob_scene.instance()
+	var mob = mob_level1_scene.instance()
+	if level == 2:
+		mob = mob_level2_scene.instance()
+	elif level == 3:
+		mob = mob_level3_scene.instance()
 	add_child(mob)
 	
 	mob.position = mob_spawn_location.position
@@ -52,4 +60,6 @@ func _on_MobTimer_timeout():
 
 func _on_ScoreTimer_timeout():
 	score += 1
+	if score == 10 || score == 20:
+		level += 1
 	$HUD.update_score(score)

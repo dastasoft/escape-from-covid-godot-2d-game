@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Mob_Level1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/loop.wav" type="AudioStream" id=5]
 [ext_resource path="res://art/game_over.wav" type="AudioStream" id=6]
 [ext_resource path="res://Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://Mob_Level2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Mob_Level3.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -15,7 +17,9 @@ _data = {
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
-mob_scene = ExtResource( 2 )
+mob_level1_scene = ExtResource( 2 )
+mob_level2_scene = ExtResource( 8 )
+mob_level3_scene = ExtResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 240, 360 )
